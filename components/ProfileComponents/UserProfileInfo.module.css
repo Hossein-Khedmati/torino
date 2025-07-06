@@ -9,31 +9,70 @@
   border: 1px solid #00000033;
   border-radius: 10px;
   padding: 10px;
+  margin-bottom: 30px;
 }
 .accountInfos > div,
 .userInfos > div,
 .bankInfos > div {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: auto auto;
+}
+.accountInfos > div>span,
+.userInfos > div>span,
+.bankInfos > div>span , .mobileNum {
+  height: 40px;
+  font-size: 1.1rem;
+}
+.accountInfos > div>span>span,
+.userInfos > div>span>span,
+.bankInfos > div>span>span , .mobileNum>span {
+  margin-right: 30px;
+}
+.mobileNum{
+    display: flex;
+    align-items: center;
+}
+.accountInfos>h3, .userInfos>h3 ,.bankInfos> h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.editBtn {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  font-family: yekanbakh;
+  font-size: 1rem;
+  color: #3db1d3;
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
 }
 .formOptions {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.form{
+    font-size: 1.1rem;
 }
 .form input,
 .form select {
   min-width: 250px;
   height: 45px;
   border-radius: 5px;
-  border: 1px solid #00000080;
+  border: 2px solid #00000032;
   padding: 0 10px;
   font-family: yekanbakh;
   font-size: 1rem;
+  margin-bottom: 15px;
 }
-.formActions{
-    border-top: 1px solid #00000033;
+.formActions {
+  border-top: 1px solid #00000033;
   padding-top: 10px;
-
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
 }
 .formActions > button {
   width: 140px;
@@ -44,14 +83,18 @@
   font-family: yekanbakh;
   font-size: 1.2rem;
   font-weight: 600;
+  margin:0 15px;
 }
-.formActions > button[type="submit"]{
-    background-color: #28A745;
-    color: #fff;
+.formActions > button[type="submit"] {
+  background-color: #28a745;
+  color: #fff;
 }
-.formActions > button[type="button"]{
-    background-color: #fff;
-    color: #28A745;
-    border: 2px solid #28A745
+.formActions > button[type="button"] {
+  background-color: #fff;
+  color: #28a745;
+  border: 2px solid #28a745;
 }
-
+.error{
+    color: red;
+    font-size: 1rem;
+}

@@ -62,7 +62,7 @@ export default function ProfilePage() {
         </ul>
       </div>
       <div className={styles.components}>
-        <UserProfileInfo />
+      {profile==="profile" ? <UserProfileInfo /> : null}
       </div>
     </div>
   );

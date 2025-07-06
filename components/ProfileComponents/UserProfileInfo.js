@@ -6,6 +6,7 @@ import { fetchUser, updateUserProfile } from "@/services/api";
 import { toast } from "react-toastify";
 import styles from "./UserProfileInfo.module.css";
 import { ClipLoader } from "react-spinners";
+import Image from "next/image";
 
 const personalInfoSchema = yup.object().shape({
   firstName: yup.string().required("نام الزامی است"),
@@ -156,27 +157,36 @@ export default function UserProfileInfo() {
               onClick={() => setEditingSection("account")}
               className={styles.editBtn}
             >
+              <Image
+                alt="edit.png"
+                src="/images/edit-2.png"
+                width={16}
+                height={16}
+              />
               ویرایش اطلاعات
             </button>
           )}
         </h3>
 
         {editingSection === "account" ? (
-          <form className={styles.form} onSubmit={handleAccountFormSubmit(onAccountSubmit)}>
+          <form
+            className={styles.form}
+            onSubmit={handleAccountFormSubmit(onAccountSubmit)}
+          >
             <div className={styles.formOptions}>
-            <span>
-              شماره موبایل: <span>{display(userData.mobile)}</span>
-            </span>
+              <span className={styles.mobileNum}>
+                شماره موبایل: <span>{display(userData.mobile)}</span>
+              </span>
               <label>
-                ایمیل:
                 <input
                   {...registerAccount("email")}
                   defaultValue={userData.email}
+                  placeholder="آدرس ایمیل"
                 />
                 {accountErrors.email && (
-                  <span className={styles.error}>
+                  <p className={styles.error}>
                     {accountErrors.email.message}
-                  </span>
+                  </p>
                 )}
               </label>
             </div>
@@ -208,75 +218,84 @@ export default function UserProfileInfo() {
               onClick={() => setEditingSection("personal")}
               className={styles.editBtn}
             >
+              <Image
+                alt="edit.png"
+                src="/images/edit-2.png"
+                width={16}
+                height={16}
+              />
               ویرایش اطلاعات
             </button>
           )}
         </h3>
 
         {editingSection === "personal" ? (
-          <form className={styles.form} onSubmit={handlePersonalFormSubmit(onPersonalSubmit)}>
+          <form
+            className={styles.form}
+            onSubmit={handlePersonalFormSubmit(onPersonalSubmit)}
+          >
             <div className={styles.formOptions}>
               <label>
-                نام:
                 <input
                   {...registerPersonal("firstName")}
                   defaultValue={userData.firstName}
+                  placeholder="نام"
                 />
                 {personalErrors.firstName && (
-                  <span className={styles.error}>
+                  <p className={styles.error}>
                     {personalErrors.firstName.message}
-                  </span>
+                  </p>
                 )}
               </label>
               <label>
-                نام خانوادگی:
                 <input
                   {...registerPersonal("lastName")}
                   defaultValue={userData.lastName}
+                  placeholder="نام خانوادگی"
                 />
                 {personalErrors.lastName && (
-                  <span className={styles.error}>
+                  <p className={styles.error}>
                     {personalErrors.lastName.message}
-                  </span>
+                  </p>
                 )}
               </label>
               <label>
-                کدملی:
                 <input
                   {...registerPersonal("nationalCode")}
                   defaultValue={userData.nationalCode}
+                  placeholder="کد ملی"
                 />
                 {personalErrors.nationalCode && (
-                  <span className={styles.error}>
+                  <p className={styles.error}>
                     {personalErrors.nationalCode.message}
-                  </span>
+                  </p>
                 )}
               </label>
               <label>
-                جنسیت:
                 <select
                   {...registerPersonal("gender")}
                   defaultValue={userData.gender}
+                  placeholder="جنسیت"
                 >
                   <option value="male">مرد</option>
                   <option value="female">زن</option>
                 </select>
                 {personalErrors.gender && (
-                  <span className={styles.error}>
+                  <p className={styles.error}>
                     {personalErrors.gender.message}
-                  </span>
+                  </p>
                 )}
               </label>
               <label>
-                تاریخ تولد:
                 <input
                   {...registerPersonal("birthDate")}
                   defaultValue={userData.birthDate}
+                  placeholder="تاریخ تولد"
                 />
                 {personalErrors.birthDate && (
-                  <span className={styles.error}>
+                  <p className={styles.error}>
                     {personalErrors.birthDate.message}
-                  </span>
+                  </p>
                 )}
               </label>
             </div>
@@ -326,48 +345,58 @@ export default function UserProfileInfo() {
               onClick={() => setEditingSection("bank")}
               className={styles.editBtn}
             >
+              <Image
+                alt="edit.png"
+                src="/images/edit-2.png"
+                width={16}
+                height={16}
+              />
               ویرایش اطلاعات
             </button>
           )}
         </h3>
 
         {editingSection === "bank" ? (
-          <form className={styles.form} onSubmit={handleBankFormSubmit(onBankSubmit)}>
+          <form
+            className={styles.form}
+            onSubmit={handleBankFormSubmit(onBankSubmit)}
+          >
             <div className={styles.formOptions}>
               <label>
-                شماره شبا:
                 <input
                   {...registerBank("shaba_code")}
                   defaultValue={userData.payment?.shaba_code}
+                  placeholder="شماره شبا"
                 />
                 {bankErrors.shaba_code && (
-                  <span className={styles.error}>
+                  <p className={styles.error}>
                     {bankErrors.shaba_code.message}
-                  </span>
+                  </p>
                 )}
               </label>
               <label>
-                شماره کارت:
                 <input
                   {...registerBank("debitCard_code")}
                   defaultValue={userData.payment?.debitCard_code}
+                  placeholder="شماره کارت"
                 />
                 {bankErrors.debitCard_code && (
-                  <span className={styles.error}>
+                  <p className={styles.error}>
                     {bankErrors.debitCard_code.message}
-                  </span>
+                  </p>
                 )}
               </label>
               <label>
-                شماره حساب:
+                {" "}
                 <input
                   {...registerBank("accountIdentifier")}
                   defaultValue={userData.payment?.accountIdentifier}
+                  placeholder="شماره حساب"
                 />
                 {bankErrors.accountIdentifier && (
-                  <span className={styles.error}>
+                  <p className={styles.error}>
                     {bankErrors.accountIdentifier.message}
-                  </span>
+                  </p>
                 )}
               </label>
             </div>
