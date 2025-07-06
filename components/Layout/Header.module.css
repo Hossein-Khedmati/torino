@@ -25,13 +25,13 @@
   display: flex;
   flex-flow: row wrap;
 }
-.menu > li {
+.menu  li {
   list-style: none;
   cursor: pointer;
   margin-left: 50px;
   font-size: 1rem;
 }
-.menu > li > img {
+.menu  li > img {
   display: none;
 }
 

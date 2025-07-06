@@ -12,26 +12,27 @@ import TourCard from "@/components/TourCard/TourCard";
 
 export default function Home() {
   const router = useRouter();
-  const { origin, destination, date } = router.query;
+  const { origin, destination, startDate, endDate } = router.query;
 
   const { data: tours = [], isLoading } = useQuery({
-    queryKey: ["tours", { origin, destination, date }],
-    queryFn: () => fetchTours({ origin, destination, date }),
+    queryKey: ["tours", { origin, destination, startDate, endDate }],
+    queryFn: () => fetchTours({ origin, destination, startDate, endDate }),
   });
 
-  const handleSearch = ({ origin, destination, date }) => {
+  const handleSearch = ({ origin, destination, startDate, endDate }) => {
     router.push({
       pathname: "/",
       query: {
         origin,
         destination,
-        date,
+        startDate,
+        endDate,
       },
     });
   };
 
   useEffect(() => {
-    if (origin || destination || date) {
+    if (origin || destination || startDate || endDate) {
       router.replace("/", undefined, { shallow: true });
     }
   }, []);
@@ -41,17 +42,16 @@ export default function Home() {
       <Head>
         <title>تورینو | رزور بلیت آنلاین</title>
       </Head>
+      <div className={styles.banner}>
+        <Image
+          src="/images/banner.png"
+          alt="banner.png"
+          width="1000"
+          height="350"
+          priority
+        />
+      </div>
       <div className={styles.container}>
-        <div className={styles.banner}>
-          <Image
-            src="/images/banner.png"
-            alt="banner.png"
-            width="1000"
-            height="350"
-            priority
-          />
-        </div>
-
         <div className={styles.title}>
           <h1>
             <span>تورینو</span> برگزار کننده بهترین تور های داخلی و خارجی
@@ -62,7 +62,7 @@ export default function Home() {
           destinationOptions={cities}
           onSearch={handleSearch}
         />
-
+        <h1 className={styles.toursTitle}>همه تور ها</h1>
         {isLoading ? (
           <p>در حال بارگذاری تورها...</p>
         ) : tours.length === 0 ? (
@@ -80,12 +80,12 @@ export default function Home() {
 }
 
 export async function getServerSideProps(context) {
-  const { origin, destination, date } = context.query;
+  const { origin, destination, startDate, endDate } = context.query;
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(
-    ["tours", { origin, destination, date }],
-    () => fetchTours({ origin, destination, date })
+    ["tours", { origin, destination, startDate, endDate }],
+    () => fetchTours({ origin, destination, startDate, endDate })
   );
 
   return {

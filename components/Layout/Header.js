@@ -5,16 +5,18 @@ import LoginModal from "../Auth/LoginModal";
 import { useAuth } from "@/Context/AuthContext";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
+import { useLoginModal } from "@/Context/LoginModalContext";
+import LoginModalManager from "../Auth/LoginModalManager";
 
-function Header({menu,setMenu}) {
-  const [showLogin, setShowLogin] = useState(false);
+function Header({ menu, setMenu }) {
+  const { openLoginModal } = useLoginModal();
   const [showDropdown, setShowDropdown] = useState(false);
   const { mobile, logout } = useAuth();
 
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.menuBtn} onClick={()=>setMenu(!menu)}>
+        <div className={styles.menuBtn} onClick={() => setMenu(!menu)}>
           <Image
             alt="menu.png"
             src="/images/menu.png"
@@ -23,7 +25,7 @@ function Header({menu,setMenu}) {
             priority
           />
         </div>
-        <div className={`${styles.navbar} ${menu ? styles.navActive : ''}`}>
+        <div className={`${styles.navbar} ${menu ? styles.navActive : ""}`}>
           <Image
             alt="logo.png"
             src="/images/torino.png"
@@ -32,7 +34,7 @@ function Header({menu,setMenu}) {
             priority
           />
           <ul className={styles.menu}>
-            <li>
+            <Link href={"/"}><li>
               {" "}
               <Image
                 alt="home.png"
@@ -42,6 +44,7 @@ function Header({menu,setMenu}) {
               />
               صفحه اصلی
             </li>
+            </Link>
             <li>
               {" "}
               <Image
@@ -77,7 +80,7 @@ function Header({menu,setMenu}) {
 
         {/* دکمه ورود یا پروفایل */}
         {!mobile ? (
-          <div className={styles.button} onClick={() => setShowLogin(true)}>
+          <div className={styles.button} onClick={openLoginModal}>
             <Image
               alt="profile.png"
               src="/images/profile.png"
@@ -160,8 +163,7 @@ function Header({menu,setMenu}) {
           </div>
         )}
       </div>
-
-      <LoginModal isOpen={showLogin} onClose={() => setShowLogin(false)} />
+      <LoginModalManager />
     </>
   );
 }

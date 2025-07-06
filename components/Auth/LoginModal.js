@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { axiosClient } from "@/client";
+import { axiosClient } from "@/services/client";
 import Cookies from "js-cookie";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "@/utils/YupSchemas";
+
+import { AnimatePresence, motion } from "framer-motion";
 
 import styles from "./LoginModal.module.css";
 import CustomOtpInput from "./CustomOtp";
@@ -40,8 +42,12 @@ export default function LoginModal({ isOpen, onClose }) {
   const handleSendOtp = async () => {
     setLoading(true);
     try {
-      await axiosClient.post("auth/send-otp", { mobile: getValues("mobile") });
-      toast.success("کد ارسال شد");
+      const res = await axiosClient.post("auth/send-otp", {
+        mobile: getValues("mobile"),
+      });
+      console.log(res);
+
+      toast.success(`کد ارسال شد : ${res?.data.code}`);
       setStep("code");
       setTimer(60);
     } catch (err) {
@@ -65,9 +71,9 @@ export default function LoginModal({ isOpen, onClose }) {
       });
 
       const { accessToken, refreshToken, user } = res.data;
-      Cookies.set("access_token", accessToken, { expires: 7 });
-      Cookies.set("refresh_token", refreshToken, { expires: 30 });
-      Cookies.set("user_mobile", user.mobile, { expires: 30 });
+      Cookies.set("access_token", accessToken, { expires: 30 });
+      Cookies.set("refresh_token", refreshToken, { expires: 365 });
+      Cookies.set("user_mobile", user.mobile, { expires: 365 });
       setMobile(user.mobile);
       toast.success("ورود با موفقیت انجام شد");
       onClose();
@@ -85,69 +91,77 @@ export default function LoginModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className={styles.backdrop}>
-      <div className={styles.modalBox}>
-        {step === "mobile" ? (
-          <>
-            <button onClick={onClose} className={styles.closeBtn}>
-              ×
-            </button>
-            <form
-              onSubmit={handleSubmit(onSubmitMobile)}
-              className={styles.form}
-            >
-              <h2>ورود به تورینو</h2>
-              <div className={styles.phoneInput}>
-                <p>شماره موبایل خود را وارد کنید :</p>
-                <input
-                  type="text"
-                  placeholder="4253***0912"
-                  {...register("mobile", {
-                    onChange: (e) => setMobileState(e.target.value),
-                  })}
-                  className={errors.mobile ? styles.errorInput : undefined}
+    <AnimatePresence>
+      <div className={styles.backdrop}>
+        <motion.div
+          className={styles.modalBox}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.3 }}
+        >
+          {step === "mobile" ? (
+            <>
+              <button onClick={onClose} className={styles.closeBtn}>
+                ×
+              </button>
+              <form
+                onSubmit={handleSubmit(onSubmitMobile)}
+                className={styles.form}
+              >
+                <h2>ورود به تورینو</h2>
+                <div className={styles.phoneInput}>
+                  <p>شماره موبایل خود را وارد کنید :</p>
+                  <input
+                    type="text"
+                    placeholder="4253***0912"
+                    {...register("mobile", {
+                      onChange: (e) => setMobileState(e.target.value),
+                    })}
+                    className={errors.mobile ? styles.errorInput : undefined}
+                  />
+                  {errors.mobile && (
+                    <p className={styles.errorText}>{errors.mobile.message}</p>
+                  )}
+                </div>
+                <button type="submit" disabled={loading}>
+                  {loading ? "در حال ارسال..." : "ارسال کد تایید"}
+                </button>
+              </form>
+            </>
+          ) : (
+            <>
+              <button
+                className={styles.backBtn}
+                onClick={() => setStep("mobile")}
+              >
+                <Image
+                  src="/images/left.png"
+                  alt="back.png"
+                  width="24"
+                  height="24"
                 />
-                {errors.mobile && (
-                  <p className={styles.errorText}>{errors.mobile.message}</p>
-                )}
-              </div>
-              <button type="submit" disabled={loading}>
-                {loading ? "در حال ارسال..." : "ارسال کد تایید"}
               </button>
-            </form>
-          </>
-        ) : (
-          <>
-            <button
-              className={styles.backBtn}
-              onClick={() => setStep("mobile")}
-            >
-              <Image
-                src="/images/left.png"
-                alt="back.png"
-                width="24"
-                height="24"
-              />
-            </button>
-            <div className={styles.otpPart}>
-              <h2 className={styles.h2}>کد تایید را وارد کنید.</h2>
-              <div className={styles.otp}>
-                <h3>کد تایید به شماره {mobileState} ارسال شد</h3>
+              <div className={styles.otpPart}>
+                <h2 className={styles.h2}>کد تایید را وارد کنید.</h2>
+                <div className={styles.otp}>
+                  <h3>کد تایید به شماره {mobileState} ارسال شد</h3>
 
-                <CustomOtpInput length={6} value={code} onChange={setCode} />
-                {timer > 0 ? (
-                  <div>ارسال مجدد تا {timer} ثانیه دیگر</div>
-                ) : (
-                  <div onClick={handleSendOtp}>ارسال مجدد کد</div>
-                )}
+                  <CustomOtpInput length={6} value={code} onChange={setCode} />
+                  {timer > 0 ? (
+                    <div>ارسال مجدد تا {timer} ثانیه دیگر</div>
+                  ) : (
+                    <div onClick={handleSendOtp}>ارسال مجدد کد</div>
+                  )}
+                </div>
+                <button onClick={handleCheckOtp} disabled={loading}>
+                  {loading ? "در حال بررسی..." : "ورود به تورینو"}
+                </button>
               </div>
-              <button onClick={handleCheckOtp} disabled={loading}>
-                {loading ? "در حال بررسی..." : "ورود به تورینو"}
-              </button>
-            </div>
-          </>
-        )}
+            </>
+          )}
+        </motion.div>
       </div>
-    </div>
+    </AnimatePresence>
   );
 }

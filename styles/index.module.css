@@ -21,8 +21,12 @@
   color: #28a745;
 }
 .tourList {
-  display: flex;
-  flex-flow: row wrap;
-  gap: 20px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.toursTitle{
+  word-spacing: 5px;
 }

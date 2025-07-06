@@ -24,7 +24,7 @@ export default function SearchBox({
   const [selectedDestination, setSelectedDestination] = useState(null);
   const [isDestinationOpen, setIsDestinationOpen] = useState(false);
 
-  const [date, setDate] = useState("");
+  const [dateRange, setDateRange] = useState([]);
 
   const originRef = useRef();
   const destinationRef = useRef();
@@ -58,7 +58,11 @@ export default function SearchBox({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch({ origin, destination, date });
+
+    const startDate = dateRange[0]?.toDate()?.toISOString()?.split("T")[0] || "";
+    const endDate = dateRange[1]?.toDate()?.toISOString()?.split("T")[0] || "";
+
+    onSearch({ origin, destination, startDate, endDate });
   };
 
   return (
@@ -127,7 +131,6 @@ export default function SearchBox({
               ? cityMap[selectedDestination.name] || selectedDestination.name
               : "مقصد"}
           </div>
-          
           <AnimatePresence>
             {isDestinationOpen && (
               <motion.div
@@ -162,14 +165,13 @@ export default function SearchBox({
         {/* Date Picker */}
         <div className={styles.dateInput}>
           <DatePicker
+            range
             calendar={persian}
             locale={persian_fa}
-            onChange={(date) => {
-              const iso = date?.toDate()?.toISOString()?.split("T")[0];
-              setDate(iso);
-            }}
+            value={dateRange}
+            onChange={setDateRange}
             inputClass={styles.input}
-            placeholder="تاریخ "
+            placeholder="تاریخ رفت و برگشت"
             className="green"
           />
         </div>
