@@ -26,3 +26,15 @@ export const updateUserProfile = async (data) => {
   const res = await axiosAuth.put("/user/profile", data);
   return res.data;
 };
+export const basketGet = async () => {
+  const res = await axiosAuth.get(`/basket`);
+  return res.data;
+};
+export const basketPut = async (data) => {
+  const res = await axiosAuth.put(`/basket/${data}`);
+  return res.data;
+};
+export const orderPost = async (data) => {
+  const res = await axiosAuth.post(`/order` , data);
+  return res.data;
+};

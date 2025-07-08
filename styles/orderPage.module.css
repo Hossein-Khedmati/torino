@@ -1,0 +1,125 @@
+.form {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 16px;
+  background-color: #f3f3f3;
+  padding: 30px 130px 100px 130px;
+}
+.userInfos {
+  width: calc(73% - 8px);
+  min-height: 228px;
+  height: fit-content;
+  border: 1px solid #00000033;
+  border-radius: 10px;
+  background-color: #ffffff;
+  padding: 15px 20px;
+}
+.userInfos > h1 {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  word-spacing: 5px;
+  margin-bottom: 10px;
+}
+.userInfos > h1 > img {
+  margin-left: 10px;
+  filter: brightness(0%);
+}
+.inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.inputs  input,
+.inputs  select , .datePickerInput{
+  width: 264px;
+  height: 50px;
+  border: 2px solid #808080;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 1.2rem;
+  font-family: yekanbakh;
+}
+
+.genderSelect {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.tourInfos {
+  width: calc(27% - 8px);
+  height: 228px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: 1px solid #00000033;
+}
+.tourInfos > .title {
+  border-bottom: 2px dashed #00000080;
+  height: 80px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+.title > .tourTitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.title > .tourRange {
+  font-size: 1.1rem;
+  color: #282828;
+}
+.tourInfos > .price {
+  padding: 15px;
+}
+.price > div {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.priceText {
+  font-size: 1.1rem;
+  color: #282828;
+}
+.priceValue {
+  font-size: 1rem;
+  color: #282828;
+}
+.priceValue > span {
+  font-size: 2.2rem;
+  color: #009eca;
+  font-weight: 600;
+  margin-left: 5px;
+}
+.submit {
+  width: 100%;
+  height: 55px;
+  border-radius: 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  font-size: 1.8rem;
+  font-family: yekanbakh;
+  margin-top: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.submit:hover {
+  background-color: #208437;
+}
+.formGroup {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.error {
+  color: #ff3333;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  text-align: right;
+}

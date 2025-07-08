@@ -7,6 +7,12 @@ import { toast } from "react-toastify";
 import styles from "./UserProfileInfo.module.css";
 import { ClipLoader } from "react-spinners";
 import Image from "next/image";
+import DatePicker from "react-multi-date-picker";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
+import gregorian from "react-date-object/calendars/gregorian";
+import "react-multi-date-picker/styles/colors/green.css";
+
 
 const personalInfoSchema = yup.object().shape({
   firstName: yup.string().required("نام الزامی است"),
@@ -35,12 +41,14 @@ export default function UserProfileInfo() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [editingSection, setEditingSection] = useState(null);
+  const [birthDate, setBirthDate] = useState(null);
 
   const {
     register: registerPersonal,
     handleSubmit: handlePersonalFormSubmit,
     reset: resetPersonal,
     formState: { errors: personalErrors },
+    setValue: setPersonalValue,
   } = useForm({
     resolver: yupResolver(personalInfoSchema),
   });
@@ -95,6 +103,11 @@ export default function UserProfileInfo() {
       debitCard_code: data.payment?.debitCard_code,
       accountIdentifier: data.payment?.accountIdentifier,
     });
+    
+    // Set initial birthDate for the date picker
+    if (data.birthDate) {
+      setBirthDate(new Date(data.birthDate));
+    }
   };
 
   const refreshUser = async () => {
@@ -142,6 +155,17 @@ export default function UserProfileInfo() {
   };
 
   const display = (value) => (value === "string" || value === "" ? "-" : value);
+
+  const handleDateChange = (date) => {
+    setBirthDate(date);
+    if (date) {
+      // Convert Persian date to Gregorian date string
+      const gregorianDate = date.convert(gregorian).format("YYYY-MM-DD");
+      setPersonalValue("birthDate", gregorianDate);
+    } else {
+      setPersonalValue("birthDate", "");
+    }
+  };
 
   if (isLoading) return <ClipLoader />;
   if (!userData) return <p>اطلاعاتی یافت نشد</p>;
@@ -287,10 +311,14 @@ export default function UserProfileInfo() {
                 )}
               </label>
               <label>
-                <input
-                  {...registerPersonal("birthDate")}
-                  defaultValue={userData.birthDate}
+                <DatePicker
+                  value={birthDate}
+                  onChange={handleDateChange}
+                  calendar={persian}
+                  locale={persian_fa}
                   placeholder="تاریخ تولد"
+                  format="YYYY/MM/DD"
+                  className="green"
                 />
                 {personalErrors.birthDate && (
                   <p className={styles.error}>

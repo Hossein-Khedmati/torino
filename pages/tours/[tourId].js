@@ -4,25 +4,38 @@ import Head from "next/head";
 import { fetchTours } from "@/services/api";
 import styles from "../../styles/toursDetail.module.css";
 import { cityMap } from "@/utils/CitiesDatas";
+import { ClipLoader } from "react-spinners";
+import { basketPut } from "../../services/api";
+import { toast } from "react-toastify";
 
 export default function TourDetail({ tour }) {
   const router = useRouter();
 
   if (router.isFallback) {
-    return <p>در حال بارگذاری...</p>;
+    return <ClipLoader />;
   }
 
   if (!tour) {
     return <p>تور یافت نشد</p>;
   }
 
+  const vehicles = {
+    Bus: "اتوبوس",
+    Van: "ون",
+    SUV: "خودرو شاسی بلند",
+    Airplane: "هواپیما",
+  };
 
-  const vehicles={
-    Bus:"اتوبوس",
-    Van:"ون",
-    SUV:"خودرو شاسی بلند",
-    Airplane:"هواپیما"
-  }
+  const handleBasket = async () => {
+    try {
+      const res = await basketPut(tour.id);
+      toast.success(`${res.message}`);
+
+      router.push("order");
+    } catch (err) {
+      toast.error(`${err.message}`);
+    }
+  };
 
   return (
     <>
@@ -70,7 +83,7 @@ export default function TourDetail({ tour }) {
                 </span>
               </div>
               <div className={styles.reserve}>
-                <button>رزرو و خرید</button>
+                <button onClick={handleBasket}>رزرو و خرید</button>
                 <p>
                   {" "}
                   <span>{tour.price.toLocaleString()}</span> تومان
