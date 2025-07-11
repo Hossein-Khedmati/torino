@@ -30,3 +30,8 @@
 .toursTitle{
   word-spacing: 5px;
 }
+.sliderContainer{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}

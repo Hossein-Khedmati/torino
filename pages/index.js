@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import { cities } from "@/utils/CitiesDatas";
 import { useEffect } from "react";
 import TourCard from "@/components/TourCard/TourCard";
+import Slider from "@/components/Slider/Slider";
 
 export default function Home() {
   const router = useRouter();
@@ -74,6 +75,9 @@ export default function Home() {
             ))}
           </div>
         )}
+        <div className={styles.sliderContainer}>
+          <Slider />
+        </div>
       </div>
     </>
   );
