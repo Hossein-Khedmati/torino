@@ -10,6 +10,8 @@ import { cities } from "@/utils/CitiesDatas";
 import { useEffect } from "react";
 import TourCard from "@/components/TourCard/TourCard";
 import Slider from "@/components/Slider/Slider";
+import TelBox from "@/components/TelBox/TelBox";
+import Features from "@/components/Features/Features";
 
 export default function Home() {
   const router = useRouter();
@@ -75,8 +77,13 @@ export default function Home() {
             ))}
           </div>
         )}
+        <div className={styles.telBox}><TelBox /></div>
         <div className={styles.sliderContainer}>
           <Slider />
+        </div>
+        <div className={styles.borderLine}></div>
+        <div className={styles.features}>
+          <Features />
         </div>
       </div>
     </>

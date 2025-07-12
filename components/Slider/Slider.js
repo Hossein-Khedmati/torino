@@ -14,6 +14,7 @@ export default function Slider() {
   const startX = useRef(null);
   const endX = useRef(null);
   const isDragging = useRef(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleNext = () => {
     setActiveIndex((prev) => (prev + 1) % cards.length);
@@ -55,6 +56,13 @@ export default function Slider() {
       handlePrev();
     }
   };
+  useEffect(() => {
+    if (isHovered) return;
+    const interval = setInterval(() => {
+      handleNext();
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [activeIndex, isHovered]);
 
   // Disable right-click menu on the slider
   useEffect(() => {
@@ -98,6 +106,8 @@ export default function Slider() {
           onTouchEnd={handleTouchEnd}
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
           {(() => {
             const rotatedCards = [
