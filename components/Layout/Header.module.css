@@ -122,6 +122,9 @@
 .logoutLi {
   color: #d40000 !important;
 }
+.crossIcon{
+  display: none;
+}
 
 @media (max-width: 800px) {
   .container {
@@ -140,13 +143,23 @@
     padding: 20px 20px 20px 0;
     background-color: #ffffff;
     width: 210px;
-    border-radius: 12px;
+    border-radius: 12px 0 0 12px;
     z-index: 999;
     transition: 200ms;
   }
   .navActive {
     right: 0;
     transition: 200ms;
+    box-shadow: -6px 1px 14px -1px rgba(0, 0, 0, 0.758);
+
+  }
+  .crossIcon{
+    position: absolute;
+    top: 0; 
+    left: 20px;
+    font-size: 2.3rem;
+    color: #10411B;
+    display: block;
   }
   .menu {
     display: flex;

@@ -13,3 +13,17 @@
     font-size: 1.2rem;
     max-width: 220px;
 }
+@media (max-width:800px){
+  .textBox>h3{
+    font-size: 1.2rem;
+}
+.textBox>span{
+    font-size: 0.9rem;
+    max-width: none;
+
+}
+.imgBox>img{
+  width: 70px;
+  height: 64px;
+}
+}

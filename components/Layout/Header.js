@@ -33,6 +33,7 @@ function Header({ menu, setMenu }) {
             height={45}
             priority
           />
+          <div className={styles.crossIcon} onClick={() => setMenu(false)}>×</div>
           <ul className={styles.menu}>
             <Link href={"/"}><li>
               {" "}

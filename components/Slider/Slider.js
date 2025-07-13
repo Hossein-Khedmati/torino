@@ -117,7 +117,7 @@ export default function Slider() {
 
             return rotatedCards.map((card, i) => {
               const zIndex = cards.length - i;
-              const transform = `translateX(${i * -70}px) scale(${
+              const transform = `translateX(${i * -55}px) scale(${
                 1 - i * 0.15
               })`;
 

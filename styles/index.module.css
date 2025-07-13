@@ -89,4 +89,15 @@
   .telBox {
     flex-flow: column wrap;
   }
+  .sliderContainer {
+    flex-flow: column wrap;
+  }
+  .borderLine {
+    position: relative;
+    width: 100%;
+  }
+  .features {
+    flex-flow: column wrap;
+    gap: 30px;
+  }
 }
