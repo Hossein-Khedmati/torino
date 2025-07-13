@@ -1,5 +1,6 @@
 .container {
   padding: 0 130px;
+  overflow: hidden;
 }
 .banner {
   width: 100%;
@@ -46,7 +47,7 @@
   margin-top: 150px;
   margin-bottom: 20px;
 }
-.borderLine{
+.borderLine {
   position: absolute;
   right: 0;
   width: 100%;
@@ -58,4 +59,34 @@
   flex-flow: row wrap;
   justify-content: space-between;
   padding: 40px 0;
+}
+
+@media (max-width: 800px) {
+  .container {
+    padding: 0 20px;
+  }
+  .banner {
+    width: 100%;
+    height: 120px;
+  }
+  .banner > img {
+    width: 100%;
+    height: 100%;
+  }
+  .title > h1 {
+    font-size: 1.2rem;
+    word-spacing: 3px;
+  }
+  .toursTitle {
+    font-size: 1.4rem;
+    word-spacing: 2px;
+    font-weight: 400;
+    color: #000000;
+  }
+  .tourList {
+    margin-top: 8px;
+  }
+  .telBox {
+    flex-flow: column wrap;
+  }
 }

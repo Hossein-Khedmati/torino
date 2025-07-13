@@ -154,7 +154,7 @@
     position: absolute;
     top: 50px;
   }
-  .menu > li {
+  .menu  li {
     font-size: 1.1rem;
     margin-bottom: 25px;
     display: flex;
@@ -163,9 +163,10 @@
     margin-left: 0;
     font-weight: 400;
   }
-  .menu > li > img {
+  .menu  li  img {
     display: block;
     margin-left: 10px;
+    filter: grayscale(100%);
   }
   .signInBtn {
     display: block;
