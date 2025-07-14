@@ -32,8 +32,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
-.inputs  input,
-.inputs  select , .datePickerInput{
+.inputs input,
+.inputs select,
+.datePickerInput {
   width: 264px;
   height: 50px;
   border: 2px solid #808080;
@@ -122,4 +123,55 @@
   font-size: 0.8rem;
   margin-top: 0.25rem;
   text-align: right;
+}
+
+@media (max-width: 800px) {
+  .form {
+    flex-flow: column wrap;
+    gap: 16px;
+    background-color: #fff;
+    padding: 20px 30px;
+  }
+  .userInfos {
+    width: 100%;
+    padding: 15px 15px 0 15px;
+  }
+  .userInfos > h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    word-spacing: 3px;
+  }
+  .formGroup {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .formGroup > div {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+  .inputs input,
+  .inputs select,
+  .datePickerInput {
+    width: 95%;
+    height: 50px;
+    border: 2px solid #808080;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 1.2rem;
+    font-family: yekanbakh;
+  }
+  .tourInfos {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .title > .tourTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .title > .tourRange {
+    font-size: 1rem;
+    color: #282828;
+  }
 }

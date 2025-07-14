@@ -165,6 +165,13 @@ export default function TourDetail({ tour }) {
               <p>{tour.insurance ? "دارد" : "ندارد"}</p>
             </div>
           </div>
+          <div className={styles.reserveMobile}>
+                <button onClick={handleBasket}>رزرو و خرید</button>
+                <p>
+                  {" "}
+                  <span>{tour.price.toLocaleString()}</span> تومان
+                </p>
+              </div>
         </div>
       </div>
     </>
