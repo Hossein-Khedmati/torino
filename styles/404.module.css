@@ -3,6 +3,7 @@
   height: fit-content;
   display: flex;
   flex-flow: row wrap;
+  overflow: hidden;
 }
 .container > div {
   width: 50%;
@@ -11,21 +12,43 @@
   align-items: center;
   justify-content: center;
 }
-.texts>h1{
-    font-size: 2.3rem;
-    margin-bottom: 30px;
-
+.texts > h1 {
+  font-size: 2.3rem;
+  margin-bottom: 30px;
 }
-.texts>button{
-    background-color: #D8FFE1;
-    color: #28A745;
-    border: none;
-    width: 300px;
-    height: 70px;
-    border-radius: 16px;
-    font-size: 1.6rem;
-    font-family: yekanbakh;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 30px;
+.texts  button {
+  background-color: #d8ffe1;
+  color: #28a745;
+  border: none;
+  width: 300px;
+  height: 70px;
+  border-radius: 16px;
+  font-size: 1.6rem;
+  font-family: yekanbakh;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 30px;
+}
+@media (max-width: 800px) {
+  .container {
+    flex-flow: column-reverse wrap;
+    margin-bottom: 70px;
+  }
+  .image > img {
+    width: 322px;
+    height: 322px;
+  }
+  .container > div {
+    width: 100%;
+  }
+  .texts > h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  .texts  button {
+    margin-top: 0;
+    width: 230px;
+    height: 58px;
+    font-size: 1.4rem;
+  }
 }
