@@ -38,3 +38,7 @@ export const orderPost = async (data) => {
   const res = await axiosAuth.post(`/order` , data);
   return res.data;
 };
+export const  transactionsGet= async () => {
+  const res = await axiosAuth.get(`/user/transactions`);
+  return res.data;
+};

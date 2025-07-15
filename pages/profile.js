@@ -4,6 +4,7 @@ import styles from "../styles/profilePage.module.css";
 import Image from "next/image";
 import UserProfileInfo from "@/components/ProfileComponents/UserProfileInfo";
 import { fetchUser } from "@/services/api";
+import UserTransactions from "@/components/ProfileComponents/UserTransactions";
 
 export default function ProfilePage() {
   const { mobile, loading } = useAuth();
@@ -63,6 +64,7 @@ export default function ProfilePage() {
       </div>
       <div className={styles.components}>
       {profile==="profile" ? <UserProfileInfo /> : null}
+      {profile==="transactions" ? <UserTransactions /> : null}
       </div>
     </div>
   );

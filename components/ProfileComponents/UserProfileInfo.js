@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
 import { fetchUser, updateUserProfile } from "@/services/api";
@@ -12,29 +11,9 @@ import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import gregorian from "react-date-object/calendars/gregorian";
 import "react-multi-date-picker/styles/colors/green.css";
+import { personalInfoSchema, accountInfoSchema , bankInfoSchema } from "@/utils/YupSchemas";
 
 
-const personalInfoSchema = yup.object().shape({
-  firstName: yup.string().required("نام الزامی است"),
-  lastName: yup.string().required("نام خانوادگی الزامی است"),
-  nationalCode: yup
-    .string()
-    .matches(/^\d{10}$/, "کدملی باید 10 رقمی باشد")
-    .required("کدملی الزامی است"),
-  gender: yup.string().oneOf(["male", "female"]).required("جنسیت الزامی است"),
-  birthDate: yup.string().required("تاریخ تولد الزامی است"),
-});
-
-const accountInfoSchema = yup.object().shape({
-  mobile: yup.string().required("موبایل الزامی است"),
-  email: yup.string().email("ایمیل معتبر نیست").required("ایمیل الزامی است"),
-});
-
-const bankInfoSchema = yup.object().shape({
-  shaba_code: yup.string().required("شماره شبا الزامی است"),
-  debitCard_code: yup.string().required("شماره کارت الزامی است"),
-  accountIdentifier: yup.string().required("شماره حساب الزامی است"),
-});
 
 export default function UserProfileInfo() {
   const [userData, setUserData] = useState(null);

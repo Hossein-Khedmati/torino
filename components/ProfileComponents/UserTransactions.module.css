@@ -1,0 +1,56 @@
+.container {
+  width: 100%;
+  border: 1px solid #00000033;
+  border-radius: 10px;
+  overflow: hidden;
+  max-height: 415px;
+  overflow-y: scroll;
+  margin-bottom: 30px;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table > thead {
+  height: 55px;
+  background-color: #f3f3f3;
+  font-size: 1rem;
+}
+.table > thead th {
+  width: 25%;
+  text-align: right;
+}
+
+.firstPad {
+  padding-right: 15px;
+}
+.dataRows {
+  height: 55px;
+}
+.id {
+  font-size: 0.7rem;
+  font-family: sans-serif;
+}
+@media (max-width: 800px) {
+  .table > thead {
+    background-color: #dbdbdb;
+    color: #282828cc;
+    font-size: 0.8rem;
+  }
+  .table > thead th {
+    width: 33.3%;
+    text-align: right;
+  }
+  .paymentMobile {
+    display: none;
+  }
+  .dataRows {
+    font-size: 1rem;
+  }
+  .dataRows > td:nth-child(1) {
+    font-size: 0.7rem;
+  }
+  .id {
+    font-size: 0.6rem;
+  }
+}
