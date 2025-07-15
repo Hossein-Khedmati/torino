@@ -5,6 +5,7 @@ import Image from "next/image";
 import UserProfileInfo from "@/components/ProfileComponents/UserProfileInfo";
 import { fetchUser } from "@/services/api";
 import UserTransactions from "@/components/ProfileComponents/UserTransactions";
+import UserTours from "@/components/ProfileComponents/UserTours";
 
 export default function ProfilePage() {
   const { mobile, loading } = useAuth();
@@ -65,6 +66,7 @@ export default function ProfilePage() {
       <div className={styles.components}>
       {profile==="profile" ? <UserProfileInfo /> : null}
       {profile==="transactions" ? <UserTransactions /> : null}
+      {profile==="tours" ? <UserTours /> : null}
       </div>
     </div>
   );

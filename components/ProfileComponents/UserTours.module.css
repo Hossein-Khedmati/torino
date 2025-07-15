@@ -1,0 +1,136 @@
+.container {
+  width: 100%;
+  border: 1px solid #00000033;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.tourBox {
+  border: 1px solid hsla(0, 0%, 0%, 0.2);
+  border-radius: 8px;
+  padding-top: 15px;
+}
+.titles {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 237px;
+  padding: 0 15px;
+  font-weight: 600;
+  word-spacing: 3px;
+}
+.titles > span {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+.titles > span > img {
+  margin-left: 10px;
+}
+.date {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 0 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.date > div h4 {
+  word-spacing: 5px;
+}
+.date > div h4 > span {
+  font-weight: 400;
+  word-spacing: 3px;
+}
+.price {
+  border-top: 1px solid #00000033;
+  display: flex;
+  height: 60px;
+  padding: 15px 18px;
+}
+.tourNum {
+  border-left: 1px solid #00000033;
+  padding-left: 20px;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+}
+.tourNum > p,
+.tourPrice > p {
+  color: #00000080;
+}
+.tourNum > p > span,
+.tourPrice > p > span {
+  color: #282828;
+  font-weight: 600;
+  margin-right: 5px;
+}
+.tourPrice > p > span > span {
+  margin-right: 5px;
+  color: #00000080;
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+.tourPrice {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 800px) {
+  .container {
+    border: none;
+    padding: 0;
+  }
+  .titles {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    justify-content: space-between;
+    padding: 0 5px;
+    font-weight: 400;
+    word-spacing: 3px;
+    padding: 0 10px;
+    padding-left: 25px;
+  }
+  .titles > span {
+    height: 28px;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+  }
+  .titles > span > img {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+  }
+  .date {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 0 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.date > div{
+    width: 100%;
+}
+.date > div h4{
+    width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.date > div h4 > span {
+  font-weight: 400;
+  word-spacing: 3px;
+  color: #00000099;
+}
+.price {
+    justify-content: space-between;
+}
+}

@@ -42,3 +42,7 @@ export const  transactionsGet= async () => {
   const res = await axiosAuth.get(`/user/transactions`);
   return res.data;
 };
+export const  userToursGet= async () => {
+  const res = await axiosAuth.get(`/user/tours`);
+  return res.data;
+};
