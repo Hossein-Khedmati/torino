@@ -75,6 +75,7 @@
   transition: 200ms;
 }
 .dropdown {
+  overflow: hidden;
   position: absolute;
   top: 125%;
   right: -12%;

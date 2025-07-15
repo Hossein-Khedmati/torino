@@ -7,10 +7,37 @@
   flex-direction: column;
   gap: 20px;
 }
+
 .tourBox {
   border: 1px solid hsla(0, 0%, 0%, 0.2);
   border-radius: 8px;
   padding-top: 15px;
+  position: relative;
+}
+.progress {
+  border-radius: 10px;
+  height: 25px;
+  width: fit-content;
+  position: absolute;
+  left: 20px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+.active {
+  background-color: #1b72fd77; /* green for active */
+  color: #0022ff;
+}
+
+.pending {
+  background-color: #d1b9004d; /* green for active */
+  color: #d1b900;
+}
+
+.completed {
+  background-color: #28a7454d; /* gray for completed */
+  color: #28a745;
 }
 .titles {
   width: 100%;
@@ -84,6 +111,9 @@
     border: none;
     padding: 0;
   }
+  .tourBox{
+    padding-top: 35px;
+  }
   .titles {
     width: 100%;
     display: flex;
@@ -108,29 +138,41 @@
     margin-left: 5px;
   }
   .date {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 0 15px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-.date > div{
     width: 100%;
-}
-.date > div h4{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 0 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .date > div {
     width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-.date > div h4 > span {
-  font-weight: 400;
-  word-spacing: 3px;
-  color: #00000099;
-}
-.price {
+  }
+  .date > div h4 {
+    width: 100%;
+    display: flex;
     justify-content: space-between;
-}
+  }
+  .date > div h4 > span {
+    font-weight: 400;
+    word-spacing: 3px;
+    color: #00000099;
+  }
+  .price {
+    justify-content: space-between;
+  }
+  .progress {
+    border-radius: 10px;
+    height: 20px;
+    width: fit-content;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    font-size: 0.7rem;
+  }
 }
