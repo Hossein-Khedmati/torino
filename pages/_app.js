@@ -10,6 +10,7 @@ import { QueryClient, QueryClientProvider, hydrate } from "@tanstack/react-query
 import { useState, useEffect } from "react";
 
 import LoginModal from "@/components/Auth/LoginModal";
+import RouteLoader from "@/components/RouteLoader/RouteProgress";
 
 // InnerApp برای استفاده از context و گوش دادن به event
 function InnerApp({ Component, pageProps }) {
@@ -43,6 +44,7 @@ export default function App({ Component, pageProps }) {
       <hydrate state={pageProps.dehydratedState}>
         <AuthProvider>
           <LoginModalProvider>
+            <RouteLoader />
             <InnerApp Component={Component} pageProps={pageProps} />
           </LoginModalProvider>
         </AuthProvider>
