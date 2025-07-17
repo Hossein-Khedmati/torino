@@ -60,7 +60,11 @@
   justify-content: space-between;
   padding: 40px 0;
 }
-
+@media (min-width: 800px) and (max-width: 1200px) {
+  .container {
+    padding: 0 30px;
+  }
+}
 @media (max-width: 800px) {
   .container {
     padding: 0 20px;

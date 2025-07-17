@@ -17,7 +17,7 @@
   flex-flow: column wrap;
   margin-left: 100px;
 }
-.lists:nth-last-child(1){
+.lists:nth-last-child(1) {
   margin-left: 0;
 }
 .lists > li:nth-child(1) {
@@ -41,7 +41,7 @@
 .phone > img {
   margin-bottom: 15px;
 }
-.phone>p{
+.phone > p {
   font-weight: 600;
 }
 .logos > img {
@@ -56,62 +56,82 @@
   padding-bottom: 35px;
   border-top: 1px solid #00000033;
 }
-
+@media (min-width: 800px) and (max-width: 1200px) {
+  .container {
+    width: calc(100% - 100px);
+  }
+  .textPart {
+    width: 50%;
+  }
+  .logoPart {
+    width: 50%;
+  }
+  .logos > img {
+    margin-right: 10px;
+    margin-bottom: 5px;
+    width: 66px;
+    height: 68px;
+  }
+  .copyright {
+    width: calc(100% - 60px);
+    padding: 10px;
+    margin: auto;
+    font-size: 12px;
+  }
+}
 @media (max-width: 800px) {
   .container {
-  width: calc(100% - 60px);
-  height: 390px;
-  border-top: 2px dashed #00000033;
-  padding-bottom: 0px;
-}
-.lists {
-  margin-left: 0;
-}
-.textPart {
-  justify-content: space-between;
-  width: 100%;
-
-}
-.lists > li {
-  margin-left: 10px;
-}
-.logoPart {
-  width: 100%;
-  display: flex;
-  flex-flow: row-reverse wrap;
-  justify-content: space-between;
-  align-items: center;
-
-}
-.logos{
-  width: 60%;
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: space-evenly;
-}
-.logos > img {
-  margin-right: 10px;
-  margin-bottom: 5px;
-  width: 36px;
-  height: 38px;
-}
-.phone{
-  text-align: left;
-}
-.phone > img {
-  width: 80px;
-  height: 27px;
-  margin-bottom: 0;
-}
-.phone>p{
-  font-weight: 500;
-  font-size: 11px;
-}
-.copyright {
-  width: calc(100% - 60px);
-  padding: 10px;
-  margin: auto;
-  font-size: 12px;
-}
+    width: calc(100% - 60px);
+    height: 390px;
+    border-top: 2px dashed #00000033;
+    padding-bottom: 0px;
+  }
+  .lists {
+    margin-left: 0;
+  }
+  .textPart {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .lists > li {
+    margin-left: 10px;
+  }
+  .logoPart {
+    width: 100%;
+    display: flex;
+    flex-flow: row-reverse wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logos {
+    width: 60%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .logos > img {
+    margin-right: 10px;
+    margin-bottom: 5px;
+    width: 36px;
+    height: 38px;
+  }
+  .phone {
+    text-align: left;
+  }
+  .phone > img {
+    width: 80px;
+    height: 27px;
+    margin-bottom: 0;
+  }
+  .phone > p {
+    font-weight: 500;
+    font-size: 11px;
+  }
+  .copyright {
+    width: calc(100% - 60px);
+    padding: 10px;
+    margin: auto;
+    font-size: 12px;
+  }
 }

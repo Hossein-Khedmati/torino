@@ -2,28 +2,38 @@
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  gap: 10px
-  ;
+  gap: 10px;
 }
-.textBox>h3{
-    font-size: 1.8rem;
+.textBox > h3 {
+  font-size: 1.8rem;
 }
-.textBox>span{
-    display: block;
+.textBox > span {
+  display: block;
+  font-size: 1.2rem;
+  max-width: 220px;
+}
+@media (min-width: 800px) and (max-width: 1300px) {
+  .textBox > h3 {
+    font-size: 1.5rem;
+  }
+  .textBox > span {
+    font-size: 0.9rem;
+  }
+  .imgBox > img {
+    width: 70px;
+    height: 64px;
+  }
+}
+@media (max-width: 800px) {
+  .textBox > h3 {
     font-size: 1.2rem;
-    max-width: 220px;
-}
-@media (max-width:800px){
-  .textBox>h3{
-    font-size: 1.2rem;
-}
-.textBox>span{
+  }
+  .textBox > span {
     font-size: 0.9rem;
     max-width: none;
-
-}
-.imgBox>img{
-  width: 70px;
-  height: 64px;
-}
+  }
+  .imgBox > img {
+    width: 70px;
+    height: 64px;
+  }
 }

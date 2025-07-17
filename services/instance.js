@@ -37,9 +37,12 @@ axiosAuth.interceptors.response.use(
 
       try {
         // تلاش برای گرفتن access_token جدید
-        const response = await axios.post("http://localhost:6500/auth/refresh-token", {
-          refreshToken,
-        });
+        const response = await axios.post(
+          "http://localhost:6500/auth/refresh-token",
+          {
+            refreshToken,
+          }
+        );
 
         const newAccessToken = response.data.accessToken;
 
@@ -49,7 +52,6 @@ axiosAuth.interceptors.response.use(
         // درخواست قبلی رو با توکن جدید بفرست
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
         return axiosAuth(originalRequest);
-
       } catch (refreshError) {
         // اگر refresh هم شکست خورد، dispatch و پاک‌سازی
         Cookies.remove("access_token");

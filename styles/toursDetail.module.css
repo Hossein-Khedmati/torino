@@ -131,6 +131,38 @@
 .reserveMobile {
   display: none;
 }
+@media (min-width: 950px) and (max-width: 1200px) {
+  .tourBox {
+    width: 98%;
+  }
+}
+@media (min-width: 800px) and (max-width: 950px) {
+  .tourBox {
+    width: 98%;
+  }
+  .options {
+    gap: 18px;
+  }
+  .options > span {
+    font-size: 1rem;
+    align-items: center;
+  }
+  .options > span > img {
+    width: 18px;
+    height: 18px;
+  }
+  .reserve > button {
+    width: 174px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+  .reserve > p > span {
+    color: #009eca;
+    font-size: 1.5rem;
+    margin-left: 5px;
+    font-weight: 600;
+  }
+}
 @media (max-width: 800px) {
   .container {
     padding: 0;
@@ -183,7 +215,6 @@
   }
   .options {
     width: 100%;
-    gap: 0;
     justify-content: space-between;
     margin-bottom: 35px;
     gap: 5px;
