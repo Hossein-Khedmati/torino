@@ -1,11 +1,12 @@
 import Link from "next/link";
 import styles from "./TourCard.module.css";
+import Image from "next/image";
 
 export default function TourCard({ tour, isFiltered }) {
   return (
     <Link href={`/tours/${tour.id}`}>
     <div className={styles.container}>
-      <div className={styles.tourImage}><img src={tour.image} alt={tour.title} width={280} height={160} /></div>
+      <div className={styles.tourImage}><Image src={tour.image} alt={tour.title} width={280} height={160} /></div>
       <h1 className={styles.title}>{tour.title}</h1>
       <div className={styles.options}>
         {tour.options.map((opt,index) => (

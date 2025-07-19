@@ -49,7 +49,7 @@ function Footer({setMenu}) {
           />
           <Image
             alt="logo.png"
-            src="/images/footer-icons/qrCode.png"
+            src="/images/footer-icons/qrcode.png"
             width={"68"}
             height={"74"}
           />

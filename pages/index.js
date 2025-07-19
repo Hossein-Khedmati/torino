@@ -47,11 +47,12 @@ export default function Home() {
       </Head>
       <div className={styles.banner}>
         <Image
-          src="/images/banner.png"
+          src="/images/banner.webp"
           alt="banner.png"
           width="1000"
           height="350"
           priority
+          quality={75}
         />
       </div>
       <div className={styles.container}>

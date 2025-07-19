@@ -3,10 +3,10 @@ import styles from "./Slider.module.css";
 import Image from "next/image";
 
 const cards = [
-  { id: 1, image: "images/slider/yazd.png" },
-  { id: 2, image: "images/slider/airplane.png" },
-  { id: 3, image: "images/slider/beach.png" },
-  { id: 4, image: "images/slider/car.png" },
+  { id: 1, image: "/images/slider/yazd.webp" },
+  { id: 2, image: "/images/slider/airplane.webp" },
+  { id: 3, image: "/images/slider/beach.webp" },
+  { id: 4, image: "/images/slider/car.webp" },
 ];
 
 export default function Slider() {
@@ -127,10 +127,12 @@ export default function Slider() {
                   className={styles.card}
                   style={{ zIndex, transform }}
                 >
-                  <img
+                  <Image
                     src={card.image}
                     alt={`card-${i}`}
                     className={styles.cardImage}
+                    width={100}
+                    height={100}
                   />
                 </div>
               );
