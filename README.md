@@ -1,40 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Torino | اپلیکیشن رزرو تور و هتل
 
-## Getting Started
+📌 معرفی
+تورینو ک وب سایت رزرو تور و هتل است که کاربران می‌توانند تورهای مختلف را بررسی رزرو و مدیریت کنند این پروژه
+در بود کمپ بوتو استارت و با استفاده از تکنولوژی‌های مدرن پیاده سازی شده است
+این پروژه حاوی بکند لوکال است که دیتاها و عملیات‌های خرید و ساخت و ادیت پروفایل و همچنین لاگین و ثبت نام کاربر همگی به صورت داینامیک و با استفاده از رست فول ای پی آی پیاده‌سازی و به فرانت متصل شده است.
 
-First, run the development server:
+💻دمو پروژه
 
-```bash
+📹 [Watch the Demo Video](./demo-torino.mp4)
+
+🛠️ تکنولوژی‌های استفاده شده
+
+- React.js
+- Next.js
+- React Query
+- Context
+
+🚀 راه‌اندازی پروژه
+کلون کردن پروژه :1
+https://github.com/Hossein-Khedmati/torino.git
+2: نصب پکیج ها
+npm install
+2: اجرای پروژه
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🎖️ویژگی ها
+jwt احراز هویت با و ذخیره
+صفحه جستجوی تور با فیلتر پیشرفته و سرورساید
+داشبورد پروفایل با مدیریت رزروها و تراکنش‌ها
+رابط کاربری رسپانسیو
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+📞 ارتباط با من
+khedmati.hossein1382@gmail.com
++989379747509
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+//backend
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+🔧 بک‌اند پروژه تورینو
+این پروژه از یک API اختصاصی سمت سرور استفاده می‌کند که با استفاده از Node.js توسعه داده شده و وظیفه مدیریت عملیات‌هایی مانند احراز هویت، دریافت اطلاعات کاربر، لیست تورها و ثبت سفارش را بر عهده دارد.
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+آدرس پایه (Base URL):
+http://localhost:6500/
 
-## Learn More
+📌 مسیرهای مهم (Endpoints)
+POST /auth/register
+ثبت‌نام کاربر جدید
 
-To learn more about Next.js, take a look at the following resources:
+POST /auth/login
+ورود کاربر و دریافت توکن‌های access_token و refresh_token
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+POST /auth/verify-otp
+تأیید کد پیامک (OTP)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+POST /auth/refresh-token
+دریافت مجدد access_token با استفاده از refresh_token
 
-## Deploy on Vercel
+GET /user/profile
+دریافت اطلاعات پروفایل کاربر لاگین‌شده
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+PUT /user/profile
+ویرایش اطلاعات پروفایل کاربر
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+GET /tours
+دریافت لیست تورهای موجود
+
+GET /tours/:id
+دریافت اطلاعات کامل یک تور خاص با شناسه
+
+GET /basket
+دریافت تور انتخاب‌شده‌ی فعلی کاربر برای ثبت سفارش
+
+POST /order
+ارسال اطلاعات نهایی و ثبت سفارش
