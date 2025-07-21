@@ -7,7 +7,7 @@
 
 💻دمو پروژه
 
-📹 [Watch the Demo Video](./demo-torino.mp4)
+📹 [Watch the Demo Video](./docs/demo-torino.mp4)
 
 🛠️ تکنولوژی‌های استفاده شده
 
