@@ -1,5 +1,5 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const axiosClient = axios.create({
-  baseURL: 'http://localhost:6500/',
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
 });
