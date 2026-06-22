@@ -2,10 +2,17 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    optimizeCss: true, // فعال کردن بهینه‌سازی CSS
+    optimizeCss: true,
   },
-    images: {
-    domains: ['localhost'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "torino-backend-1.onrender.com",
+        port: "",
+        pathname: "/static/images/**",
+      },
+    ],
   },
 };
 
