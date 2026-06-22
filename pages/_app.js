@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 
 import LoginModal from "@/components/Auth/LoginModal";
 import RouteLoader from "@/components/RouteLoader/RouteProgress";
+import AnnouncementModal from "@/components/AnnouncementModal/AnnouncementModal";
 
 // InnerApp برای استفاده از context و گوش دادن به event
 function InnerApp({ Component, pageProps }) {
@@ -30,6 +31,7 @@ function InnerApp({ Component, pageProps }) {
       <Layout>
         <Component {...pageProps} />
         <ToastContainer position="top-right" rtl autoClose={3000} />
+        <AnnouncementModal />
       </Layout>
       <LoginModal isOpen={showLogin} onClose={closeLoginModal} />
     </>
